@@ -19,6 +19,8 @@ table{
 
 .bordered{
     border: 1px solid #ccc;
+    overflow: auto;
+    max-height: 90vh;
 }
 
 .CodeMirror {
@@ -28,9 +30,42 @@ table{
 }
 
 .visual{
-    width: 30%;
-    height: 300px;
+    width: 25%;
+    min-height: 90vh;
     margin: auto;
+}
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    min-width: 23%;
+}
+.field{
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    align-items: center;
+}
+
+.index{
+    padding: 5px;
+    text-align: center;
+}
+
+.btn{
+    border: 1px solid #ccc;
+    /*margin: auto;*/
+    padding: 3px;
+    text-align: center;
+    cursor: default;
+}
+
+.green{
+    background-color: #bbffbb;
+    width: 45%;
+}
+.red{
+    background-color: #ffbbbb;
 }
 
 h1 {
