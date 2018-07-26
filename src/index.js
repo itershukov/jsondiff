@@ -98,12 +98,17 @@ const app = new Vue({
                 right = {};
                 left  = {};
 
-                this.links.forEach((link, i) => {
-                    if (link[2]){
-                        left[i] = getValByPath(leftFlatten, link[0]);
-                        right[i] =  getValByPath(rightFlatten, link[1]);
-                    }
-                });
+
+                try {
+                    this.links.forEach((link, i) => {
+                        if (link[2]){
+                            left[i] = link[0][0] !== "$" ? getValByPath(leftFlatten, link[0]) : jsonpath.query(leftFlatten, link[0],1);
+                            right[i] = link[1][0] !== "$" ? getValByPath(rightFlatten, link[1]) : jsonpath.query(rightFlatten, link[1],1);
+                        }
+                    });
+                }catch (e) {
+                    return "Parsing error"
+                }
             }
 
             const delta = differ.diff(editMode ? left : right, editMode ? right : left);
